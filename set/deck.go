@@ -10,7 +10,7 @@ import (
 // DeckSize of a cards of cards
 const DeckSize = 40
 
-// Deck func
+// Deck returns a full shuffled deck with all the 40 cards
 func Deck() (cards Cards) {
 	rand.Seed(time.Now().UnixNano())
 	ints := rand.Perm(DeckSize)

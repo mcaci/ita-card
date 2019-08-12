@@ -11,8 +11,8 @@ func TestCreateDeck(t *testing.T) {
 
 func TestRemovingTwoCardsShouldGiveDifferentCards(t *testing.T) {
 	d := Deck()
-	a := d.Supply()
-	b := d.Supply()
+	a := d.Top()
+	b := d.Top()
 
 	if a == b {
 		t.Fatalf("Drawn cards should be different but they are %v and %v", a, b)
