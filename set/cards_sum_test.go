@@ -17,9 +17,9 @@ func TestEmptyPileSums0(t *testing.T) {
 }
 
 func TestPileWithOneCardSums1(t *testing.T) {
-	assertScoreCount(t, 1, Cards{*card.MustID(1)})
+	assertScoreCount(t, 1, *NewMust(1))
 }
 
 func TestPileWithThreeCardsSums3(t *testing.T) {
-	assertScoreCount(t, 3, Cards{*card.MustID(1), *card.MustID(2), *card.MustID(3)})
+	assertScoreCount(t, 3, *NewMust(1, 2, 3))
 }

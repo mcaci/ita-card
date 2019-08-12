@@ -5,17 +5,28 @@ import "github.com/mcaci/ita-cards/card"
 // Cards type
 type Cards []card.Item
 
-// Add func
+// NewMust creates a set of cards with ids that must be valid
+// (from 1 to 40) or else it will panic
+func NewMust(ids ...uint8) *Cards {
+	cards := make(Cards, len(ids))
+	for i, id := range ids {
+		cards[i] = *card.MustID(id)
+	}
+	return &cards
+}
+
+// Add appends cards to the set
 func (cards *Cards) Add(ids ...card.Item) {
 	*cards = append(*cards, ids...)
 }
 
-// Clear func
+// Clear removes all cards from the set
 func (cards *Cards) Clear() {
 	*cards = Cards{}
 }
 
-// Sum func
+// Sum returns the sum of the value of the cards in accordance
+// to the mapping function provided as input
 func (cards *Cards) Sum(point func(card.Item) uint8) (sum uint8) {
 	for _, c := range *cards {
 		sum += point(c)
@@ -23,7 +34,8 @@ func (cards *Cards) Sum(point func(card.Item) uint8) (sum uint8) {
 	return
 }
 
-// Find func
+// Find returns the index of the card given in input or
+// -1 if not found (to change with error)
 func (cards *Cards) Find(id card.Item) int {
 	for index, c := range *cards {
 		if c == id {
@@ -33,8 +45,9 @@ func (cards *Cards) Find(id card.Item) int {
 	return -1
 }
 
-// Supply func
-func (cards *Cards) Supply() card.Item {
+// Top func return the top card of the set
+// and deletes from it
+func (cards *Cards) Top() card.Item {
 	card := (*cards)[0]
 	*cards = (*cards)[1:]
 	return card
