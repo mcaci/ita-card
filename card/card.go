@@ -43,6 +43,15 @@ func (c Item) Seed() Seed {
 	return c.seed
 }
 
+// ToID returns the id value of the card (1 to 40)
+// 1-10 are Coin cards
+// 11-20 are Cup cards
+// 21-30 are Sword cards
+// 31-40 are Cudgel cards
+func (c Item) ToID() uint8 {
+	return c.number + uint8(c.seed)*10
+}
+
 func (c Item) String() string {
 	if c.Number() == 0 && c.Seed() == 0 {
 		return "(Undefined card)"
