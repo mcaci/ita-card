@@ -25,15 +25,6 @@ func (cards *Cards) Clear() {
 	*cards = Cards{}
 }
 
-// Sum returns the sum of the value of the cards in accordance
-// to the mapping function provided as input
-func (cards *Cards) Sum(point func(card.Item) uint8) (sum uint8) {
-	for _, c := range *cards {
-		sum += point(c)
-	}
-	return
-}
-
 // Find returns the index of the card given in input or
 // -1 if not found (to change with error)
 func (cards *Cards) Find(id card.Item) int {
