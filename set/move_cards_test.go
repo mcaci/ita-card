@@ -36,6 +36,19 @@ func TestMoveOneCard(t *testing.T) {
 	}
 }
 
+func TestCardMovedCorrectlyFromSource(t *testing.T) {
+	from := NewMust(1, 2, 3, 4, 5)
+	lenFrom := len(*from)
+	to := NewMust()
+	MoveOne(card.MustID(2), from, to)
+	if lenFrom != len(*from) {
+		t.Fatalf("From should be 4 but was %d: from %v, to %v", lenFrom, from, to)
+	}
+	if id := (*to)[0].ToID(); id != 2 {
+		t.Fatalf("moved card should be the one with ID == 2 but was %d", id)
+	}
+}
+
 func TestMoveOneCardError(t *testing.T) {
 	from := NewMust(1, 2, 3, 4, 5)
 	to := NewMust()
