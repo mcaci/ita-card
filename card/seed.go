@@ -15,5 +15,5 @@ const (
 )
 
 func (s Seed) String() string {
-	return []string{"Coin", "Cup", "Sword", "Cudgel"}[s]
+	return []string{"O", "C", "S", "B"}[s]
 }

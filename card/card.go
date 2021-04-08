@@ -56,5 +56,5 @@ func (c Item) String() string {
 	if c.Number() == 0 && c.Seed() == 0 {
 		return "(Undefined card)"
 	}
-	return fmt.Sprintf("%d di %s", c.Number(), c.Seed())
+	return fmt.Sprintf("%d%s", c.Number(), c.Seed())
 }
