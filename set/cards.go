@@ -1,13 +1,16 @@
 package set
 
-import "github.com/mcaci/ita-cards/card"
+import (
+	"github.com/mcaci/ita-cards/card"
+	"golang.org/x/exp/constraints"
+)
 
 // Cards type
 type Cards []card.Item
 
 // NewMust creates a set of cards with ids that must be valid
 // (from 1 to 40) or else it will panic
-func NewMust(ids ...uint8) *Cards {
+func NewMust[T constraints.Integer](ids ...T) *Cards {
 	cards := make(Cards, len(ids))
 	for i, id := range ids {
 		cards[i] = *card.MustID(id)

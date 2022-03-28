@@ -2,15 +2,16 @@ package card
 
 import "testing"
 
-func TestCardMustToID(t *testing.T) {
-	if MustID(1).ToID() != 1 {
+func TestCardFromToIDNoErr(t *testing.T) {
+	_, err := FromID(1)
+	if err != nil {
 		t.Fatal("Expecting 1 as result")
 	}
 }
 
-func TestCardFromToIDNoErr(t *testing.T) {
-	_, err := FromID(1)
-	if err != nil {
+func TestCardMustIDNoErr(t *testing.T) {
+	id := MustID(1)
+	if id.Number() != 1 {
 		t.Fatal("Expecting 1 as result")
 	}
 }
