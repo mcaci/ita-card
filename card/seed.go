@@ -14,6 +14,5 @@ const (
 	Cudgel
 )
 
-func (s Seed) String() string {
-	return []string{"O", "C", "S", "B"}[s]
-}
+func (s Seed) Seed() Seed     { return s }
+func (s Seed) String() string { return []string{"Coin", "Cup", "Sword", "Cudgel"}[s] }
