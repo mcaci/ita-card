@@ -1,5 +1,7 @@
 package card
 
+//go:generate stringer -type Seed seed.go
+// generated using http://godoc.org/golang.org/x/tools/cmd/stringer
 // Seed type is an id for the seed ranging from 0 to 3
 type Seed uint8
 
@@ -14,5 +16,4 @@ const (
 	Cudgel
 )
 
-func (s Seed) Seed() Seed     { return s }
-func (s Seed) String() string { return []string{"Coin", "Cup", "Sword", "Cudgel"}[s] }
+func (s Seed) Seed() Seed { return s }
